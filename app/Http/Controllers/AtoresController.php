@@ -21,5 +21,9 @@ class AtoresController extends Controller
 
         Return redirect('atores');
     }
+    public function destroy($id){
+        Ator::find($id)->delete();
+        return redirect('atores');
+    }
 
 }

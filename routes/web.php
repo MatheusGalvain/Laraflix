@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('atores', [\App\Http\Controllers\AtoresController::class, 'index']);
 Route::get('atores/create', [\App\Http\Controllers\AtoresController::class, 'create']);
 Route::post('atores/store', [\App\Http\Controllers\AtoresController::class, 'store']);
+Router::get('atores/{id}/destroy', [\App\Http\Controllers\AtoresController::class, 'destroy']);
 
 Auth::routes();
 
