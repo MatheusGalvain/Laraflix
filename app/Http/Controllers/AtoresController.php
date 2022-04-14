@@ -19,11 +19,18 @@ class AtoresController extends Controller
         $novo_ator = $request->all();
         Ator::create($novo_ator);
 
-        Return redirect('atores');
+        Return redirect()->route('atores');
     }
     public function destroy($id){
         Ator::find($id)->delete();
-        return redirect('atores');
+        Return redirect()->route('atores');
     }
-
+    public function edit($id){
+        $ator = Ator::find($id);
+        return view('atores.edit', compact('ator'));
+    }
+    public function update(AtorRequest $request, $id){
+        Ator::find($id)->update($request->all());
+        Return redirect()->route('atores');
+    }
 }

@@ -1,8 +1,8 @@
 @extends('adminlte::page')
 
 @section('content')
-    <h3>Novo Ator</h3>
-    {!! Form::open(['route'=>'atores.store']) !!}
+    <h3>Editando Ator: {{$ator->nome}} </h3>
+    {!! Form::open(['route'=>["atores.update", 'id'=>$ator->id], 'method'=>'put']) !!}
 
     @if($errors->any())
     <ul class="alert alert-danger">
@@ -15,7 +15,7 @@
         <div class="form-group">
         <!-- Nome -->
         {!! Form::label('nome', 'Nome:') !!}
-        {!! Form::text('nome', null, ['class'=>'form-control', 'required']) !!}
+        {!! Form::text('nome', $ator->nome, ['class'=>'form-control', 'required']) !!}
         
         <!-- Nacionalidade -->
         {!! Form::label('nacionalidade', 'Nacionalidade:') !!}
@@ -24,19 +24,19 @@
                                 'USA'=>'Americano',
                                 'CAN'=>'Canadense',
                                 'ARG'=>'Argentino'),
-                            'BRA',['class'=>'form-control', 'required']) !!}
+                            $ator->nacionalidade,['class'=>'form-control', 'required']) !!}
         
         <!-- Data Nascimento -->
         {!! Form::label('dt_nascimento', 'Data de Nascimento:') !!}
-        {!! Form::date('dt_nascimento', null, ['class'=>'form-control', 'required']) !!}
+        {!! Form::date('dt_nascimento', $ator->dt_nascimento, ['class'=>'form-control', 'required']) !!}
         
         <!-- inicio_atividades -->
         {!! Form::label('inicio_atividades', 'Inicio de Atividades:') !!}
-        {!! Form::date('inicio_atividades', null, ['class'=>'form-control', 'required']) !!}
+        {!! Form::date('inicio_atividades', $ator->inicio_atividades, ['class'=>'form-control', 'required']) !!}
     
         <!-- Botão criar -->
         <div class="form-group-btn">
-        {!! Form::submit('Criar Ator',['class'=>'btn btn-primary']) !!}
+        {!! Form::submit('Editar ator',['class'=>'btn btn-primary']) !!}
         {!! Form::reset('Limpar',['class'=>'btn btn-default']) !!}
         </div>
     </div>
